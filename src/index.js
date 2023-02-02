@@ -4,10 +4,41 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import {combineReducers,createStore} from 'redux'
+import {Provider} from 'react-redux'
+import productReducer from './reducers/productReducer'
+import userReducer from './reducers/userReducer';
+
+
+
+
+const rootReducer = combineReducers({
+  user:userReducer,
+  products:productReducer
+})
+const store = createStore(rootReducer,{
+  products:[
+    {
+      name:'Samsung',
+      type:'TV'
+    },
+  ],
+  user:'Mehemmed'
+},
+
+window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
+)
+
+
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
