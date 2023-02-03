@@ -1,8 +1,8 @@
-export default function userReducer(state = '',action)
+export default function userReducer(state = '',{type,payload})
 {
-  switch (action.type) {
+  switch (type) {
     case 'updateUser':
-      return action.payload.user;
+      return payload.user;
 
   
     default:
